@@ -6,3 +6,6 @@
   "logo": "http://www.unixstickers.com/image/data/stickers/flask/Flask-logo.sh.png",
   "keywords": ["Flask", "Portfolio"]
 }
+"scripts": {
+"postinstall": "ng build"
+}
