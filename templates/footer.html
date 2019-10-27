@@ -69,7 +69,7 @@
         <div class="col-lg-8 mx-auto">
           <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
           <hr class="star-dark mb-5">
-          <img class="img-fluid mb-5" src="img/portfolio/cabin.png" alt="">
+          <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/cabin.png') }}" alt="">
           <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
           <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
             <i class="fa fa-close"></i>
@@ -218,56 +218,16 @@
 
 
 <!--Innitiate webviewer for uploading files-->
-<script src="{{ url_for('static', filename='js/webviewer.js') }}"></script>
-
-
+<script src="{{ url_for('static', filename='js/webviewer.min.js') }}"></script>
 
 <script>
-  WebViewer({
-    path: 'static/lib',
-    pdftronServer: 'https://demo.pdftron.com/',
-    initialDoc: 'https://css4.pub/2017/newsletter/drylab.pdf'
-  },
-
-  document.getElementById('viewer'))
-    .then(function(instance) {
-      document.getElementById('select').onchange = function(e) {
-        instance.loadDocument(e.target.value);
-      };
-
-
-      document.getElementById('file-upload').onchange = function(e) {
-        var file = e.target.files[0];
-        if (file) {
-          instance.loadDocument(file);
-        }
-      };
-
-      document.getElementById('url-form').onsubmit = function(e) {
-        e.preventDefault();
-        instance.loadDocument(document.getElementById('url').value);
-      };
-
-      docViewer.on('documentLoaded', function() {
-       // call methods relating to the loaded document
-     });
-    });
+new WebViewer({
+  path: "{{ url_for('static', filename='lib') }}",
+  pdftronServer: 'https://demo.pdftron.com/',
+  initialDoc: 'https://css4.pub/2017/newsletter/drylab.pdf',
+  config: "{{ url_for('static', filename='js/custom.js') }}"
+}, document.getElementById('viewer'));
 </script>
-
-<script>
-
-  var input = document.getElementById('file-upload');
-
-  WebViewer(...)
-    .then(function(instance) {
-      input.addEventListener('change', function() {
-        // Get the file from the input
-        var file = input.files[0];
-        instance.loadDocument(file, { filename: file.name });
-      });
-    });
-</script>
-
 
 </body>
 
