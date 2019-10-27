@@ -1,3 +1,6 @@
-$(document).addEventListener('DOMContentLoaded', function() {
-      var ann = new Annotator(document.body)
-  }, false);
+$(document).on('viewerLoaded', function() {
+  docViewer.setMargin(20);
+  docViewer.on('fitModeUpdated', function(e, fitMode) {
+    console.log('fit mode changed');
+  });
+});
