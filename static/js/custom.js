@@ -7,8 +7,4 @@ $(document).on('viewerLoaded', function() {
     }
   };
 
-  docViewer.on('documentLoaded', function() {
-   // call methods relating to the loaded document
-    // console.log('doc loaded');
-  });
 });
